@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.configuration.spring.web.model.Category;
+import org.configuration.spring.web.model.Product;
+import org.configuration.spring.web.service.ProductoService;
 import org.configuration.spring.web.service.PruebaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class PruebaController {
 	
 	@Autowired
 	PruebaService pruebaService;
+	
+	@Autowired
+	ProductoService productoService;
 	
 	@RequestMapping("/inicio.htm")
 	public void inicio() {
@@ -43,7 +48,7 @@ public class PruebaController {
 		logger.info("Estamos en listarProducto.htm");
 		ModelAndView mav = new ModelAndView();
 		
-		
+	
 		List<Category>  lstCategory = pruebaService.findAllCategory();
 		mav.addObject("parametro", "parametro enviado desde el controller");
 		mav.addObject("categories", lstCategory);
@@ -55,5 +60,6 @@ public class PruebaController {
 		
 		return mav;
 	}
-
+	
+	
 }

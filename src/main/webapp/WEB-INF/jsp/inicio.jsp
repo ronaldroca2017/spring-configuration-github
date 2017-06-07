@@ -13,9 +13,10 @@
 <body>
 	<ul>
 		<li>
-			<a href="listaProducto.htm">Listar Productos2</a>
+			<a href="listaProducto.htm">Listar Productos 01</a>
 		</li>
 		<li>
+		<a href="listaProducto2.htm">Listar Productos 02</a>
 		</li>
 	</ul>
 		<br>
