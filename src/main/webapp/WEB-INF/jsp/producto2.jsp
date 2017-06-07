@@ -12,24 +12,33 @@
 	<div align="center">
 		
 		<div >
-			<fieldset style="text-align: center;">
+			<fieldset style="border: 1px solid rgb(255,232,57);width: 400px;margin:auto;">
 			<legend>Busqueda de productos</legend>
 			
 				<label>Nombre :</label> 
 				<input type="text" name="name" />
 			
 			</fieldset>
-			
+		
 			<table>
 				<tr>
 					<td>Id</td>
 					<td>Producto</td>
+					<td>Code</td>
+					<td>Precio</td>
+					<td>Descripción</td>
+					<td>Categoria</td>
+					
 				</tr>
 			
 				<c:forEach  items="${lstProduct}" var="prod">
 					<tr>
 						<td>${prod.id_product}</td>
 						<td>${prod.name}</td>
+						<td>${prod.code}</td>
+						<td>${prod.price}</td>
+						<td>${prod.description}</td>
+						<td>${prod.category.name}</td>
 						
 					</tr>
 				</c:forEach>

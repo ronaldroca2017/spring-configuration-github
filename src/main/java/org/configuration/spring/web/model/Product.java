@@ -3,9 +3,12 @@ package org.configuration.spring.web.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,10 @@ public class Product {
 	private BigDecimal price;
 	private String description;
 	
+	
+	@ManyToOne(fetch = FetchType.EAGER)//Traigo todos los productos y sus categorias
+	@JoinColumn(name = "id_category", nullable = false)
+	private Category category;
 	
 	public Integer getId_product() {
 		return id_product;
@@ -50,6 +57,14 @@ public class Product {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	
