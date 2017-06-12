@@ -26,7 +26,7 @@ public class ProductoServiceImpl implements ProductoService {
 
 	@Override
 	public List<Product> findAllFirstName(String firstName) {
-		logger.info("Service - findAllFirstName ");
+		logger.info("Service - findAllFirstName - Parametro -> "  + firstName);
 		return productoDao.findAllFirstName(firstName);
 	}
 

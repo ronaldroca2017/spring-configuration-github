@@ -2,6 +2,9 @@ package org.configuration.spring.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.configuration.spring.web.model.Product;
 import org.configuration.spring.web.service.ProductoService;
@@ -26,6 +29,22 @@ public class ProductoController {
 		
 		ModelAndView mav = new ModelAndView();	
 		mav.addObject("parametro", "parametro enviado desde el controller");
+		mav.addObject("lstProduct", lstProduct);
+		mav.setViewName("producto_listado");
+		
+		return mav;
+	}
+	
+	
+	@RequestMapping("/buscarProducto.htm")
+	public ModelAndView buscarProducto(HttpServletRequest request){
+		logger.info("ProductoController -->  buscarProducto() ");
+		
+		String parametroBusqueda = request.getParameter("name");
+		logger.info("parametro obtenido :  " + parametroBusqueda);
+		List<Product>  lstProduct = productoService.findAllFirstName(parametroBusqueda);
+		
+		ModelAndView mav = new ModelAndView();	
 		mav.addObject("lstProduct", lstProduct);
 		mav.setViewName("producto_listado");
 		

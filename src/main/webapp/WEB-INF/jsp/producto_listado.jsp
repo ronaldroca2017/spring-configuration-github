@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listado de Productos</title>
+<base href="${pageContext.request.contextPath}/">
 </head>
 <body>
 	<h4>${parametro}</h4>
@@ -15,9 +16,11 @@
 			<fieldset style="border: 1px solid rgb(255,232,57);width: 400px;margin:auto;">
 			<legend>Busqueda de productos</legend>
 			
+			<form action="buscarProducto.htm" method="post">
 				<label>Nombre :</label> 
 				<input type="text" name="name" />
-			
+				<input type="submit" value="Buscar" />
+			</form>
 			</fieldset>
 		
 			<table>
