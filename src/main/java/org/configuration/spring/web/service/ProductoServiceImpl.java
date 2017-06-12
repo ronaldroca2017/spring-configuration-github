@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class ProductoServiceImpl implements ProductoService {
 
 	
-	final static Logger logger = Logger.getLogger(PruebaServiceImpl.class);
+	final static Logger logger = Logger.getLogger(ProductoServiceImpl.class);
 
 	@Autowired
 	ProductoDao productoDao;

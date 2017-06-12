@@ -18,20 +18,16 @@ public class ProductoController {
 	@Autowired
 	ProductoService productoService;
 	
-	@RequestMapping("/listaProducto2.htm")
-	public ModelAndView listarProducto2(){
-		logger.info("Estamos en listarProducto.htm");
-		ModelAndView mav = new ModelAndView();
-		
+	@RequestMapping("/listaProducto.htm")
+	public ModelAndView listarProducto(){
+		logger.info("ProductoController -->  listarProducto() ");
 		
 		List<Product>  lstProduct = productoService.findAllProducts();
+		
+		ModelAndView mav = new ModelAndView();	
 		mav.addObject("parametro", "parametro enviado desde el controller");
 		mav.addObject("lstProduct", lstProduct);
-		mav.setViewName("producto2");
-		logger.info("Producto size : " + lstProduct.size());
-		for(Product c : lstProduct){
-			logger.info("Los productos enviadas a la vista son : "+ c.getId_product() + " - " + c.getName());
-		}
+		mav.setViewName("producto_listado");
 		
 		return mav;
 	}
