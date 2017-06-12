@@ -1,17 +1,27 @@
 package org.configuration.spring.web.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.configuration.spring.web.model.Product;
 import org.configuration.spring.web.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * 
+ * @author Ronald Roca
+ * 
+	 * Podemos obtener los parametros enviados desde el JSP en el controller podemos usar:
+	 * 
+	 * - HttpServletRequest request					--> public ModelAndView buscarProducto(HttpServletRequest request){...}
+	 * - @RequestParam("name") String parametro   	--> @RequestMapping(value = "/buscarProducto.htm" ,  method= RequestMethod.POST)
+	 * - @PathVariable("idProf") String id   		--> @RequestMapping(value = "/detalleProfesor/{idProf}", method = RequestMethod.GET)
+	 * - @ModelAttribute("objeto") Objeto objeto	..> public ModelAndView buscarProducto(@ModelAttribute("objeto") Objeto objeto){...}
+ */
 
 @Controller
 public class ProductoController {
@@ -23,8 +33,7 @@ public class ProductoController {
 	
 	@RequestMapping("/listaProducto.htm")
 	public ModelAndView listarProducto(){
-		logger.info("ProductoController -->  listarProducto() ");
-		
+		logger.info("ProductoController -->  listarProducto() ");		
 		List<Product>  lstProduct = productoService.findAllProducts();
 		
 		ModelAndView mav = new ModelAndView();	
@@ -35,13 +44,23 @@ public class ProductoController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/buscarProducto.htm" ,  method= RequestMethod.POST)
+	public ModelAndView buscarProducto(@RequestParam("name") String parametro){
+		logger.info("ProductoController -->  buscarProducto() ");
+		List<Product>  lstProduct = productoService.findAllFirstName(parametro);
+		
+		ModelAndView mav = new ModelAndView();	
+		mav.addObject("lstProduct", lstProduct);
+		mav.setViewName("producto_listado");	
+		return mav;
+	}
 	
+	/*
 	@RequestMapping("/buscarProducto.htm")
 	public ModelAndView buscarProducto(HttpServletRequest request){
 		logger.info("ProductoController -->  buscarProducto() ");
 		
 		String parametroBusqueda = request.getParameter("name");
-		logger.info("parametro obtenido :  " + parametroBusqueda);
 		List<Product>  lstProduct = productoService.findAllFirstName(parametroBusqueda);
 		
 		ModelAndView mav = new ModelAndView();	
@@ -50,5 +69,6 @@ public class ProductoController {
 		
 		return mav;
 	}
+	*/
 	
 }

@@ -1,0 +1,13 @@
+
+
+.center_div{
+    margin: 0 auto;
+    width:10% /* value of your choice which suits your alignment */
+}
+
+.center-block {  
+    width:350px;  
+    padding:10px;  
+    background-color:#eceadc;  
+    color:#ec8007  
+    } 
