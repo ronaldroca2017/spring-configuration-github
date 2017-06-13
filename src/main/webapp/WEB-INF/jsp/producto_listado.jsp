@@ -56,6 +56,7 @@
 						<th>Precio</th>
 						<th>Descripción</th>
 						<th>Categoria</th>
+						<th>Eliminar</th>
 
 					</tr>
 				</thead>
@@ -69,7 +70,7 @@
 							<td class="info">${prod.price}</td>
 							<td>${prod.description}</td>
 							<td>${prod.category.name}</td>
-
+							<td><a href="eliminarProducto.htm?id=${prod.id_product}" >Eliminar</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

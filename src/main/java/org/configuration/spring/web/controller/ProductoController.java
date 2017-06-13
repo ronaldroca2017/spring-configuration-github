@@ -76,6 +76,19 @@ public class ProductoController {
 		return "redirect:listaProducto.htm";
 	}
 	
+	
+	@RequestMapping("/eliminarProducto.htm")
+	public String eliminarProducto(@RequestParam(value = "id", required = true) Integer idProducto ){
+		logger.info("El id del producto a eliminar es : " + idProducto);
+		Product product = productoService.getProductById(idProducto);
+		productoService.deleteProducto(product);
+		
+		return "redirect:listaProducto.htm";
+	}
+	
+	
+	
+	
 	@ModelAttribute("categoriesTypes")
 	public List<Category> getCategories(){
 		return productoService.getCategories();

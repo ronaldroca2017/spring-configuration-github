@@ -11,5 +11,6 @@ public interface ProductoService {
 	public abstract List<Product> findAllFirstName(String firstName);
 	public abstract Integer saveProducto(Product product);
 	public abstract List<Category> getCategories();
-	
+	public abstract Product getProductById(Integer id);
+	public abstract void deleteProducto(Product product);
 }

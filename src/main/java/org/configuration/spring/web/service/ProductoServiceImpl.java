@@ -43,4 +43,16 @@ public class ProductoServiceImpl implements ProductoService {
 		return productoDao.getCategories();
 	}
 
+	@Override
+	public Product getProductById(Integer id) {
+		// TODO Auto-generated method stub
+		return productoDao.getProductById(id);
+	}
+
+	@Override
+	public void deleteProducto(Product product) {
+		productoDao.deleteProducto(product);
+		
+	}
+
 }

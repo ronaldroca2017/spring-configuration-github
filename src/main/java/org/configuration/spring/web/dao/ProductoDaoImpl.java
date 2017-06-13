@@ -59,4 +59,17 @@ public class ProductoDaoImpl implements ProductoDao{
 		return sessionFactory.getCurrentSession().createCriteria(Category.class).list();
 		
 	}
+
+	@Override
+	public Product getProductById(Integer id) {
+		// TODO Auto-generated method stub
+		return (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
+				.add(Restrictions.idEq(id)).uniqueResult();
+	}
+
+	@Override
+	public void deleteProducto(Product product) {
+		sessionFactory.getCurrentSession().delete(product);
+		
+	}
 }
