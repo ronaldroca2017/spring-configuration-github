@@ -22,6 +22,7 @@ public class Product {
 	private String code;
 	private BigDecimal price;
 	private String description;
+	private String active;
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)//Traigo todos los productos y sus categorias
@@ -59,7 +60,12 @@ public class Product {
 		this.description = description;
 	}
 	
-	
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
 	public Category getCategory() {
 		return category;
 	}

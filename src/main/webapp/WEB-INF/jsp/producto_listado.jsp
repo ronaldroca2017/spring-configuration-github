@@ -10,6 +10,18 @@
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="jquery/jquery-3.2.1.js"></script>
 <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+
+<script language="JavaScript">
+function aviso(url,producto){
+if (!confirm("ALERTA!! va a proceder a eliminar el producto " +producto + ".")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
 </head>
 <body>
 
@@ -70,7 +82,7 @@
 							<td class="info">${prod.price}</td>
 							<td>${prod.description}</td>
 							<td>${prod.category.name}</td>
-							<td><a href="eliminarProducto.htm?id=${prod.id_product}" >Eliminar</a></td>
+							<td><a href="javascript:;" onclick="aviso('eliminarProducto.htm?id=${prod.id_product}','${prod.name}'); return false;">eliminar</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

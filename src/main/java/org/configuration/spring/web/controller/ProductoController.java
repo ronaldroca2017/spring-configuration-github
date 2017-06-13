@@ -81,6 +81,7 @@ public class ProductoController {
 	public String eliminarProducto(@RequestParam(value = "id", required = true) Integer idProducto ){
 		logger.info("El id del producto a eliminar es : " + idProducto);
 		Product product = productoService.getProductById(idProducto);
+		product.setActive("I");
 		productoService.deleteProducto(product);
 		
 		return "redirect:listaProducto.htm";

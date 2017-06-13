@@ -13,31 +13,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Repository
 @Transactional
-public class ProductoDaoImpl implements ProductoDao{
+public class ProductoDaoImpl implements ProductoDao {
 
-	
 	final static Logger logger = Logger.getLogger(ProductoDaoImpl.class);
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
+
 	@Override
 	public List<Product> findAllProducts() {
-		logger.info("Consulta todos los productos de la bd y los devuelve de forma descendente");	
+		logger.info("Consulta todos los productos de la bd y los devuelve de forma descendente");
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(Product.class)
-					.addOrder(Order.desc("id_product"));
+				.add(Restrictions.eq("active", "A")).addOrder(Order.desc("id_product"));
 		return c.list();
-		
+
 	}
 
 	@Override
 	public List<Product> findAllFirstName(String firstName) {
 		logger.info("Consulta todos los productos por nombre de la bd");
 		return sessionFactory.getCurrentSession().createCriteria(Product.class)
-		.add(Restrictions.like("name", firstName + "%").ignoreCase())
-                .list();
+				.add(Restrictions.eqProperty("active", "A"))
+				.add(Restrictions.like("name", firstName + "%").ignoreCase()).list();
 	}
 
 	@Override
@@ -55,21 +54,22 @@ public class ProductoDaoImpl implements ProductoDao{
 
 	@Override
 	public List<Category> getCategories() {
-		logger.info("Consulta todas las categorias de la bd");		
+		logger.info("Consulta todas las categorias de la bd");
 		return sessionFactory.getCurrentSession().createCriteria(Category.class).list();
-		
+
 	}
 
 	@Override
 	public Product getProductById(Integer id) {
-		// TODO Auto-generated method stub
-		return (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
-				.add(Restrictions.idEq(id)).uniqueResult();
+		logger.info("Obtenemos el producto por su id en la bd");
+		return (Product) sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.idEq(id))
+				.uniqueResult();
 	}
 
 	@Override
 	public void deleteProducto(Product product) {
-		sessionFactory.getCurrentSession().delete(product);
-		
+		logger.info("Eliminamos el producto actualizando su estado a Inactivo = 'I' en la bd");
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
+
 }
