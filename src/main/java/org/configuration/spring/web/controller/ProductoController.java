@@ -1,11 +1,14 @@
 package org.configuration.spring.web.controller;
 
 import java.util.List;
+
 import org.apache.log4j.Logger;
+import org.configuration.spring.web.model.Category;
 import org.configuration.spring.web.model.Product;
 import org.configuration.spring.web.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,20 +58,28 @@ public class ProductoController {
 		return mav;
 	}
 	
-	/*
-	@RequestMapping("/buscarProducto.htm")
-	public ModelAndView buscarProducto(HttpServletRequest request){
-		logger.info("ProductoController -->  buscarProducto() ");
+	@RequestMapping("/insertProducto.htm")
+	public ModelAndView insertProducto(@ModelAttribute("product") Product product){
+		logger.info("ProductoController -->  insertProducto(@ModelAttribute(product) Product product) ");
 		
-		String parametroBusqueda = request.getParameter("name");
-		List<Product>  lstProduct = productoService.findAllFirstName(parametroBusqueda);
-		
-		ModelAndView mav = new ModelAndView();	
-		mav.addObject("lstProduct", lstProduct);
-		mav.setViewName("producto_listado");
-		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("product", product);
+		mav.setViewName("producto_insertar");
 		return mav;
 	}
-	*/
 	
+	@RequestMapping("/saveProducto.htm")
+	public String saveProducto(@ModelAttribute("product") Product product){
+		logger.info("ProductoController -->  saveProducto(@ModelAttribute(product) Product product) ");
+		
+		productoService.saveProducto(product);
+		return "redirect:listaProducto.htm";
+	}
+	
+	@ModelAttribute("categoriesTypes")
+	public List<Category> getCategories(){
+		return productoService.getCategories();
+	}
+	
+
 }

@@ -2,9 +2,14 @@ package org.configuration.spring.web.dao;
 
 import java.util.List;
 
+import org.configuration.spring.web.model.Category;
 import org.configuration.spring.web.model.Product;
 
-public interface ProductoDao {
-	List<Product> findAllProducts();
-	List<Product> findAllFirstName(String firstName);
+public interface ProductoDao  {
+	
+	public abstract List<Product> findAllProducts();
+	public abstract List<Product> findAllFirstName(String firstName);
+	public abstract Integer saveProducto(Product product);
+	public abstract List<Category> getCategories();
+	
 }

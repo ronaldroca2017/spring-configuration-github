@@ -25,11 +25,21 @@
 							<td><input type="text" name="name" class="form-control" /></td>
 						</tr>
 
-						<tr>
-							<td><button class="btn btn-primary" type="submit"
-									value="Buscar">Buscar</button></td>
-						</tr>
 					</table>
+					<br>
+					<div style="text-align: right;">
+					 <div class="btn-group">
+					 		<button class="btn btn-info" type="button"
+									value="Agregar" onclick="location.href='${pageContext.request.contextPath}/insertProducto.htm'" >Agregar</button>
+
+					 </div>
+					 
+					  <div class="btn-group">
+
+							<button class="btn btn-primary" type="submit"
+									value="Buscar">Buscar</button>
+					 </div>
+					 </div>
 				</form>
 
 			</div>
