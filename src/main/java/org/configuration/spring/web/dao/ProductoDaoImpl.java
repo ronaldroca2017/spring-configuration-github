@@ -72,4 +72,30 @@ public class ProductoDaoImpl implements ProductoDao {
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
 
+	@Override
+	public boolean updateProducto(Product product) {
+		logger.info("update producto en la bd");
+		boolean success = false;
+
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(product);
+			success = true;
+		} catch (Exception e) {
+			logger.error("ERROR al actualizar el producto en la bd" + e.getMessage());
+		}
+		return success;
+	}
+
+	/*
+	 * public void updateProducto(Product product) throws Exception {
+	 * 
+		 * try { // obtaining session is omitted 
+		 * session.saveOrUpdate(product); 
+		 * } catch(Exception e) { 
+		 * // log it and rethrow; let calling code figure how to
+		 * handle throw e; 
+		 * } 
+	 * }
+	 */
+
 }

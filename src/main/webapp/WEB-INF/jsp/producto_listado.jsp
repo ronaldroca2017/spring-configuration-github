@@ -21,6 +21,16 @@ document.location = url;
 return true;
 }
 }
+
+
+
+function toogle(a,b,c)
+{
+document.getElementById(b).style.display=a;
+document.getElementById(c).style.display=a;
+}
+
+
 </script>
 </head>
 <body>
@@ -77,7 +87,7 @@ return true;
 					<c:forEach items="${lstProduct}" var="prod">
 						<tr>
 							<td class="active">${prod.id_product}</td>
-							<td>${prod.name}</td>
+							<td><a href=""  >${prod.name}</a></td>
 							<td>${prod.code}</td>
 							<td class="info">${prod.price}</td>
 							<td>${prod.description}</td>

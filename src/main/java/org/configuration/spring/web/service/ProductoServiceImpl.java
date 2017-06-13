@@ -45,14 +45,21 @@ public class ProductoServiceImpl implements ProductoService {
 
 	@Override
 	public Product getProductById(Integer id) {
-		// TODO Auto-generated method stub
+		logger.info("Service - getProductById(Integer id)");
 		return productoDao.getProductById(id);
 	}
 
 	@Override
 	public void deleteProducto(Product product) {
+		logger.info("Service - deleteProducto(Product product)");
 		productoDao.deleteProducto(product);
 		
+	}
+
+	@Override
+	public boolean updateProducto(Product product) {
+		logger.info("Service - updateProducto(Product product)");
+		return productoDao.updateProducto(product);
 	}
 
 }

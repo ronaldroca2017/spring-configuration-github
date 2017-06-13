@@ -13,5 +13,6 @@ public interface ProductoDao  {
 	public abstract List<Category> getCategories();
 	public abstract Product getProductById(Integer id);
 	public abstract void deleteProducto(Product product);
+	public abstract boolean updateProducto(Product product);
 	
 }
