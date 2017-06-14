@@ -86,19 +86,27 @@ public class ProductoController {
 		
 		return "redirect:listaProducto.htm";
 	}
-	
-	@RequestMapping("/actualizarProductoPopup.htm")
-	public ModelAndView actualizarProductoPopup(@ModelAttribute("product") Product product,
-			@RequestParam(value = "id", required = true) Integer idProducto){
+					  
+
+	@RequestMapping(value = "/actualizarProductoPopup.htm", method = RequestMethod.GET)
+	public ModelAndView actualizarProductoPopup(
+							@RequestParam("id") Integer idProducto){
 		logger.info("ProductoController -->  actualizarProductoPopup(@ModelAttribute(product) Product product),@RequestParam(value = 'id', required = true) Integer idProducto) ");
 		logger.info("El id del producto a eliminar es : " + idProducto);
-		product = productoService.getProductById(idProducto);
+		Product product = productoService.getProductById(idProducto);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("product",product);
 		mav.setViewName("producto_actualizar");
 		return mav;
 	}
 	
+	@RequestMapping("/updateProducto.htm")
+	public String updateProducto(@ModelAttribute("product") Product product){
+		logger.info("ProductoController -->  updateProducto(@ModelAttribute(product) Product product) ");
+		
+		productoService.updateProducto(product);
+		return "redirect:listaProducto.htm";
+	}
 	
 	@ModelAttribute("categoriesTypes")
 	public List<Category> getCategories(){

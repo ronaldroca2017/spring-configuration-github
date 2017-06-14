@@ -35,7 +35,7 @@ public class ProductoDaoImpl implements ProductoDao {
 	public List<Product> findAllFirstName(String firstName) {
 		logger.info("Consulta todos los productos por nombre de la bd");
 		return sessionFactory.getCurrentSession().createCriteria(Product.class)
-				.add(Restrictions.eqProperty("active", "A"))
+				.add(Restrictions.eq("active", "A"))
 				.add(Restrictions.like("name", firstName + "%").ignoreCase()).list();
 	}
 

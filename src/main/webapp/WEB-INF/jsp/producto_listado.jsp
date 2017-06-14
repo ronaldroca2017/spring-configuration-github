@@ -22,13 +22,10 @@ return true;
 }
 }
 
-
-
-function toogle(a,b,c)
-{
-document.getElementById(b).style.display=a;
-document.getElementById(c).style.display=a;
-}
+function Abrir_ventana (pagina) {
+	var opciones= "toolbar=no, location=no, directories=no, status=yes, menubar=yes, scrollbars=no, resizable=yes, width=508, height=365, top=0, left=0";
+	window.open(pagina,"",opciones);
+	}
 
 
 </script>
@@ -87,7 +84,7 @@ document.getElementById(c).style.display=a;
 					<c:forEach items="${lstProduct}" var="prod">
 						<tr>
 							<td class="active">${prod.id_product}</td>
-							<td><a href=""  >${prod.name}</a></td>
+							<td> <a href="actualizarProductoPopup.htm?id=${prod.id_product}"><font size="4" face="Verdana">${prod.name}</font></a></td>
 							<td>${prod.code}</td>
 							<td class="info">${prod.price}</td>
 							<td>${prod.description}</td>

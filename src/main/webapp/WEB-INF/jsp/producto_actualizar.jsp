@@ -94,7 +94,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<div class="checkbox">
-										<label> <input type="checkbox"> Active
+										<label> <form:checkbox path="active" /> Active
 										</label>
 									</div>
 									<p class="help-block">Lorem ipsum dolor sit amet</p>
