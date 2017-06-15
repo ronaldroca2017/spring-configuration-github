@@ -104,6 +104,15 @@ public class ProductoController {
 	public String updateProducto(@ModelAttribute("product") Product product){
 		logger.info("ProductoController -->  updateProducto(@ModelAttribute(product) Product product) ");
 		
+		logger.info("" + product.isCheckBoxActive());
+		logger.info("" + product.toString());
+		
+		if(product.isCheckBoxActive()){
+			product.setActive("A");
+		}else{
+			product.setActive("I");
+		}
+		
 		productoService.updateProducto(product);
 		return "redirect:listaProducto.htm";
 	}

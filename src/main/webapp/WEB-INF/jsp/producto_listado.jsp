@@ -6,12 +6,11 @@
 <title>Listado de Productos</title>
 <base href="${pageContext.request.contextPath}/">
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-responsive.min.css" rel="stylesheet">
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="jquery/jquery-3.2.1.js"></script>
 <link rel="stylesheet" href="css/estilo.css" type="text/css" />
 
-<script language="JavaScript">
+<script type="text/javascript">
 function aviso(url,producto){
 if (!confirm("ALERTA!! va a proceder a eliminar el producto " +producto + ".")) {
 return false;
@@ -26,6 +25,18 @@ function Abrir_ventana (pagina) {
 	var opciones= "toolbar=no, location=no, directories=no, status=yes, menubar=yes, scrollbars=no, resizable=yes, width=508, height=365, top=0, left=0";
 	window.open(pagina,"",opciones);
 	}
+
+
+function abrirPopup(pagina){
+	var posicion_x; 
+	var posicion_y; 
+	var ancho = 800;
+	var alto = 500
+	posicion_x=(screen.width/2)-(ancho/2); 
+	posicion_y=(screen.height/2)-(alto/2); 
+	window.open(pagina,"ronald", "width="+ancho+",height="+alto+",menubar=0,toolbar=0,directories=0,scrollbars=no,resizable=no,left="+posicion_x+",top="+posicion_y+"");
+	
+}
 
 
 </script>
@@ -85,7 +96,7 @@ function Abrir_ventana (pagina) {
 						<tr>
 							<td class="active">${prod.id_product}</td>
 							<td> <a href="actualizarProductoPopup.htm?id=${prod.id_product}"><font size="4" face="Verdana">${prod.name}</font></a></td>
-							<td>${prod.code}</td>
+							<td><a href="javascript:;" onclick="abrirPopup('actualizarProductoPopup.htm?id=${prod.id_product}');">${prod.code}</a></td>
 							<td class="info">${prod.price}</td>
 							<td>${prod.description}</td>
 							<td>${prod.category.name}</td>

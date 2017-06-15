@@ -23,7 +23,7 @@ public class Product {
 	private BigDecimal price;
 	private String description;
 	private String active;
-	
+	private boolean checkBoxActive;
 	
 	@ManyToOne(fetch = FetchType.EAGER)//Traigo todos los productos y sus categorias
 	@JoinColumn(name = "id_category", nullable = false)
@@ -66,11 +66,26 @@ public class Product {
 	public void setActive(String active) {
 		this.active = active;
 	}
+	
+	
+	
+	public boolean isCheckBoxActive() {
+		return checkBoxActive;
+	}
+	public void setCheckBoxActive(boolean checkBoxActive) {
+		this.checkBoxActive = checkBoxActive;
+	}
 	public Category getCategory() {
 		return category;
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	@Override
+	public String toString() {
+		return "Product [id_product=" + id_product + ", name=" + name + ", code=" + code + ", price=" + price
+				+ ", description=" + description + ", active=" + active + ", checkBoxActive=" + checkBoxActive
+				+ ", category=" + category + "]";
 	}
 	
 	
