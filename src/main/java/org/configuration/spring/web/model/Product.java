@@ -25,6 +25,29 @@ public class Product {
 	private String active;
 	private boolean checkBoxActive;
 	
+	
+	//radio button
+	private String levelProduct;
+	private String distribution;
+	
+	
+	
+	public String getLevelProduct() {
+		return levelProduct;
+	}
+	public void setLevelProduct(String levelProduct) {
+		this.levelProduct = levelProduct;
+	}
+	
+	
+	public String getDistribution() {
+		return distribution;
+	}
+	public void setDistribution(String distribution) {
+		this.distribution = distribution;
+	}
+
+
 	@ManyToOne(fetch = FetchType.EAGER)//Traigo todos los productos y sus categorias
 	@JoinColumn(name = "id_category", nullable = false)
 	private Category category;
@@ -64,6 +87,7 @@ public class Product {
 		return active;
 	}
 	public void setActive(String active) {
+		checkBoxActive = (active.equals("A"))?true:false;
 		this.active = active;
 	}
 	

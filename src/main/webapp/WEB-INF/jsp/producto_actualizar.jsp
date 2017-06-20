@@ -26,9 +26,35 @@
 		   // window.close();
 		}
 		
+		
+		function fn_salir(){
+			 document.forms[0].target='main';
+		     window.close();
+		}
+		
+		function fn_registrar_observacion(){
+		
+			 var valorresp = confirm("Esta seguro de registrar la observación al documento");
+		 if(valorresp)
+		 	{
+			document.forms[0].target='titulo';
+			
+			document.forms[0].submit();	
+			//window.opener.location.reload();
+		    
+			
+		  	}
+		 window.close();
+		
+		}
+		
+		
+		function enviaycierra(){
+			document.forms[0].submit();
+		}
 	</script>
 </head>
-<body>
+<body onunload ="window.opener.location.reload();javascript:self.close();">
 <!--
 
 Ã¡ = &aacute
@@ -54,7 +80,7 @@
 					<div class="panel-body">
 					
 						<form:form action="updateProducto.htm" commandName="product"
-							cssClass="form-horizontal" role="form" name="frmActualizar" onsubmit="cargar();">
+							cssClass="form-horizontal" role="form">
 							
 							<form:hidden path="id_product"/>
 							
@@ -117,8 +143,8 @@
 								</div>
 							</div>
 
-							 <input type="submit" class="btn btn-info" value="je Producto" />
-							
+							 <input type="button" class="btn btn-info" value="Actualizar" onclick="javascript:enviaycierra();" />					
+						
 						</form:form>
 
 

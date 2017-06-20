@@ -86,52 +86,46 @@
 								</div>
 							</div>
 							
-							
-
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<div class="checkbox">
-										<label> <input type="checkbox"> Active
+										<label> <form:checkbox path="checkBoxActive" /> Active
 										</label>
 									</div>
-									<p class="help-block">Lorem ipsum dolor sit amet</p>
+									<p class="help-block">Marcar si el producto esta activo</p>
 								</div>
 							</div>
 
+							
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Choices</label>
+								<label class="col-sm-3 control-label">Distribución</label>
 								<div class="col-sm-9">
-									<div class="checkbox">
-										<label> <input type="checkbox" name="optionsRadios"
-											id="optionsCheckbox1" value="option1" checked="">
-											Option one is this and that—be sure to include why it's great
+									<div class="radio">
+										<label> <form:radiobutton  path="distribution" value="Interior"/>Interior
 										</label>
 									</div>
-									<div class="checkbox">
-										<label> <input type="checkbox" name="optionsRadios"
-											id="optionsCheckbox2" value="option2"> Option two can
-											be something else and selecting it will deselect option one
+									<div class="radio">
+										<label> <form:radiobutton  path="distribution" value="Exterior"/> Exterior
 										</label>
 									</div>
+									<p class="help-block">Producto para interior o exterior del país</p>
+								</div>
+							</div>
+							
+								
+						<div class="form-group">
+								<label class="col-sm-3 control-label">Nivel</label>
+								<div class="col-sm-9">
+								
+							
+										<form:radiobuttons path="levelProduct" items="${nivelProduct}"></form:radiobuttons>
+										
+									
+									
+									<p class="help-block">Nivel del producto</p>
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Sex</label>
-								<div class="col-sm-9">
-									<div class="radio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios1" value="option1" checked=""> Male
-										</label>
-									</div>
-									<div class="radio">
-										<label> <input type="radio" name="optionsRadios"
-											id="optionsRadios2" value="option2"> Female
-										</label>
-									</div>
-									<p class="help-block">Lorem ipsum dolor sit amet</p>
-								</div>
-							</div>
 
 							<button type="submit" class="btn btn-info">Registrar Producto
 								</button>

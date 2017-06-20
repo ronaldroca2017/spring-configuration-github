@@ -1,5 +1,6 @@
 package org.configuration.spring.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -63,6 +64,7 @@ public class ProductoController {
 		logger.info("ProductoController -->  insertProducto(@ModelAttribute(product) Product product) ");
 		
 		ModelAndView mav = new ModelAndView();
+		product.setDistribution("Interior");
 		mav.addObject("product", product);
 		mav.setViewName("producto_insertar");
 		return mav;
@@ -71,7 +73,7 @@ public class ProductoController {
 	@RequestMapping("/saveProducto.htm")
 	public String saveProducto(@ModelAttribute("product") Product product){
 		logger.info("ProductoController -->  saveProducto(@ModelAttribute(product) Product product) ");
-		
+		product.setActive((product.isCheckBoxActive())?"A":"I");
 		productoService.saveProducto(product);
 		return "redirect:listaProducto.htm";
 	}
@@ -92,8 +94,9 @@ public class ProductoController {
 	public ModelAndView actualizarProductoPopup(
 							@RequestParam("id") Integer idProducto){
 		logger.info("ProductoController -->  actualizarProductoPopup(@ModelAttribute(product) Product product),@RequestParam(value = 'id', required = true) Integer idProducto) ");
-		logger.info("El id del producto a eliminar es : " + idProducto);
+		logger.info("El id del producto a actualizar  es : " + idProducto);
 		Product product = productoService.getProductById(idProducto);
+		logger.info("Producto obtenido -> " + product.toString());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("product",product);
 		mav.setViewName("producto_actualizar");
@@ -121,6 +124,20 @@ public class ProductoController {
 	public List<Category> getCategories(){
 		return productoService.getCategories();
 	}
+	
+	@ModelAttribute("nivelProduct")
+	 public List<String> populateNivelProduct() {
+	   
+	  //Data referencing for number radiobuttons
+	  List<String> numberList = new ArrayList<String>();
+	  numberList.add("Malo");
+	  numberList.add("Regular");
+	  numberList.add("Bueno");
+	  numberList.add("Excelente");
+
+	   
+	  return numberList;
+	 }
 	
 
 }
