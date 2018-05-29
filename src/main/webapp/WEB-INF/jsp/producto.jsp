@@ -8,7 +8,8 @@
     <title>Center a Div in Twitter Bootstrap 3</title>  
     <!-- Bootstrap -->  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">  
-    <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+    <link href="${pageContext.request.contextPath}/resources/css/estilo.css" rel="stylesheet">
+
    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->  
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->  

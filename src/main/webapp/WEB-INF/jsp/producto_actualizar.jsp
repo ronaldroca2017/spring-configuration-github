@@ -10,7 +10,9 @@
 	rel="stylesheet">
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="jquery/jquery-3.2.1.js"></script>
-<link rel="stylesheet" href="css/estilo.css" type="text/css" />
+
+<link href="${pageContext.request.contextPath}/resources/css/estilo.css" rel="stylesheet">
+
 
 	<script type="text/javascript">
 		function actualizarSubmit(){

@@ -5,15 +5,18 @@
 <meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'> 
 <title>Guardar Producto</title>
 <base href="${pageContext.request.contextPath}/">
+
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-responsive.min.css"
-	rel="stylesheet">
+<!--<link href="bootstrap-3.3.7/css/bootstrap-responsive.min.css"
+	rel="stylesheet">-->
 	<script src="jquery/jquery-3.2.1.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="bootstrap-3.3.7/js/validacion.js"></script>
+<!--<script src="bootstrap-3.3.7/js/validacion.js"></script>-->
 
-<link rel="stylesheet" href="css/estilo.css" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/css/estilo.css" rel="stylesheet">
 
+
+<script src="<c:url value="/resources/js/validacion.js"/>"></script>
 
 </head>
 <body>
@@ -46,12 +49,12 @@
 							<div class="form-group">
 								<label for="inputProducto" class="col-sm-3 control-label">Producto</label>
 								<div class="col-sm-6">
-									<form:input type="text" class="form-control" id="inputProducto"
+									<form:input type="text" class="form-control" id="inputProducto" onblur="myFunction1()"
 										placeholder="Producto" path="name" />
 									
 								</div>
 								<div class="col-sm-3">
-								<span class="help-block">* Nombre requerido</span>
+								<span class="help-block" id="nombre_requerido">* Nombre requerido</span>
 								</div>
 								
 							</div>
@@ -59,14 +62,14 @@
 							<div class="form-group">
 								<label for="inputCodigo" class="col-sm-3 control-label">C&oacutedigo</label>
 								<div class="col-sm-3">
-									<form:input type="text" class="form-control" id="inputCodigo"
+									<form:input type="text" class="form-control" id="inputCodigo" onblur="myFunction2()"
 										placeholder="Codigo" path="code" />
 								
 								</div>
 								
 								<div class="col-sm-3"></div>
 								<div class="col-sm-3">
-								<span class="help-block">* C&oacutedigo requerido</span>
+								<span class="help-block" id="codigo_requerido">* C&oacutedigo requerido</span>
 								</div>
 							</div>
 
@@ -81,7 +84,7 @@
 								</div>
 								<div class="col-sm-3"></div>
 								<div class="col-sm-3">
-								<span class="help-block">* Precio requerido</span>
+								<span class="help-block" id="precio_requerido">* Precio requerido</span>
 								</div>
 							</div>
 							
@@ -89,13 +92,14 @@
 							<div class="form-group">
 								<label for="inputTipo" class="col-sm-3 control-label">Tipo</label>
 								<div class="col-sm-6 selectContainer">
-							<form:select path="category.id_Category" class="form-control">
+							<form:select path="category.id_Category" class="form-control" id="selectTipo">
+								<form:option value="0">--Seleccionar--</form:option>
 								<form:options items="${categoriesTypes}" itemLabel="name" itemValue="id_Category"/>										
 							</form:select>
 								</div>
 								
 								<div class="col-sm-3">
-								<span class="help-block">* Seleccionar tipo</span>
+								<span class="help-block" id="seleccionar_tipo">* Seleccionar tipo</span>
 								</div>
 							</div>
 							
@@ -149,9 +153,8 @@
 								</div>
 							</div>
 
-
-							<button type="button" class="btn btn-info" id="btnRegistrarProducto">Registrar Producto
-								</button >
+								<form:button type="button" class="btn btn-info" id="btnRegistrarProducto">Registrar </form:button>
+								
 						</form:form>
 
 
@@ -163,4 +166,6 @@
 
 	</div>
 </body>
+
+
 </html>
